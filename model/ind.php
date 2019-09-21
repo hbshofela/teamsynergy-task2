@@ -3,10 +3,12 @@
 	include("conn.php");
 	
 	function LoginUser($Email, $Password){
-		$name = $Email;
+		
+		global $conn
+		$email = $Email;
 		$pass = $Password;
 		
-		$result = $conn-> query ("SELECT * FROM people WHERE name='$name' AND pass = '$pass'") or die($conn->error);
+		$result = $conn-> query ("SELECT * FROM people WHERE email='$email' AND pass = '$pass'") or die($conn->error);
 			
 		if ($result->num_rows <= 0){
 			return false;
@@ -19,7 +21,8 @@
 	 
 	function CreateUser($Email, $Name, $Password){
 
-		$name = $Email;
+		global $conn
+		$email = $Email;
 		$name = $Name;
 		$pass = $Password;
 		
@@ -34,7 +37,7 @@
 	 }	
 	 
 	 function CheckUser($Email){
-		
+		global $conn
 		$email = $Email;
 		
 		$result = $conn->query ("SELECT * FROM people WHERE email='$email'") or die($conn->error);
