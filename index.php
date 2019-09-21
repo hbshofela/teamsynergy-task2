@@ -39,6 +39,7 @@
 		echo $_SESSION['msg'];
 		$_SESSION['msg'] = '';
 	endif ?>
+	
 		<form action="model/login.php" method="post">
 		<div class="row">
 				
