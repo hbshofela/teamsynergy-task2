@@ -4,7 +4,7 @@
 	
 	function LoginUser($Email, $Password){
 		
-		global $conn
+		global $conn;
 		$email = $Email;
 		$pass = $Password;
 		
@@ -21,7 +21,7 @@
 	 
 	function CreateUser($Email, $Name, $Password){
 
-		global $conn
+		global $conn;
 		$email = $Email;
 		$name = $Name;
 		$pass = $Password;
@@ -37,16 +37,16 @@
 	 }	
 	 
 	 function CheckUser($Email){
-		global $conn
+		global $conn;
 		$email = $Email;
 		
 		$result = $conn->query ("SELECT * FROM people WHERE email='$email'") or die($conn->error);
 		
-		if ($result->num_rows <= 0){
-			return false;
+		if ($result){
+			return true;
 			}
 		else {
-			return true;
+			return false;
 		}
 	 }	
 ?>
