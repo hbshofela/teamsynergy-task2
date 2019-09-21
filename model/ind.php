@@ -26,13 +26,13 @@
 		$name = $Name;
 		$pass = $Password;
 		
-		$result = $conn->query ("INSERT INTO people (email, name, pass)  VALUES($email, '$name', '$pass')") or die($conn->error);
+		$result = $conn->query ("INSERT INTO people (email, name, pass)  VALUES('$email', '$name', '$pass')") or die($conn->error);
 			
-		if ($result->num_rows <= 0){
-			return false;
+		if ($result){
+			return true;
 			}
 		else {
-			return true;
+			return false;
 		}
 	 }	
 	 
@@ -42,11 +42,11 @@
 		
 		$result = $conn->query ("SELECT * FROM people WHERE email='$email'") or die($conn->error);
 		
-		if ($result){
-			return true;
+		if ($result->num_rows <= 0){
+			return false;
 			}
 		else {
-			return false;
+			return true;
 		}
 	 }	
 ?>
